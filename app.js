@@ -24,13 +24,8 @@ app.get("/", (req, res) => {
   (async () => {
     try {
       const connection = await client.connect();
-
-      await client.query(`DROP DATABASE IF EXISTS ${env.DATABASE_NAME};`);
-      await client.query(`CREATE DATABASE ${env.DATABASE_NAME};`);
-
-      await client.query(
-        `CREATE TABLE ${env.TABLE_NAME}(id SERIAL PRIMARY KEY, value VARCHAR NOT NULL);`
-      );
+      console.log("postgresConnction:");
+      console.log(connection);
 
       const value = "val1";
 
@@ -58,7 +53,7 @@ app.get("/select", (req, res) => {
     } finally {
       client.end();
     }
-    return res.send({selectResult});
+    return res.send({selectResult: selectResult});
   })();
 });
 
