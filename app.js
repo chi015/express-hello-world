@@ -42,6 +42,7 @@ app.get("/", (req, res) => {
     } finally {
       client.end();
     }
+    return res.send({});
   })();
 });
 
@@ -57,6 +58,7 @@ app.get("/select", (req, res) => {
     } finally {
       client.end();
     }
+    return res.send({});
   })();
 });
 
